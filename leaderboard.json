@@ -1,0 +1,1681 @@
+{
+  "players": [
+    {
+      "rank": 1,
+      "name": "SYD",
+      "points": 60961,
+      "category": {
+        "name": "ANAHATA",
+        "min": 60001,
+        "max": 70000,
+        "emoji": "🟢",
+        "reward": "⭐️ RÉCOMPENSE : 500 E ⭐️"
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 2,
+      "name": "NELSON",
+      "points": 43650,
+      "category": {
+        "name": "AJNA",
+        "min": 40001,
+        "max": 50000,
+        "emoji": "💠",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 3,
+      "name": "TYLER",
+      "points": 29651,
+      "category": {
+        "name": "LA COLÉRE",
+        "min": 15001,
+        "max": 30000,
+        "emoji": "🔥",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 4,
+      "name": "IZUMI",
+      "points": 20300,
+      "category": {
+        "name": "LA COLÉRE",
+        "min": 15001,
+        "max": 30000,
+        "emoji": "🔥",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 5,
+      "name": "EUGÈNE",
+      "points": 17065,
+      "category": {
+        "name": "LA COLÉRE",
+        "min": 15001,
+        "max": 30000,
+        "emoji": "🔥",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 6,
+      "name": "HEIKICHI",
+      "points": 16890,
+      "category": {
+        "name": "LA COLÉRE",
+        "min": 15001,
+        "max": 30000,
+        "emoji": "🔥",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 7,
+      "name": "IL-HWAN",
+      "points": 14260,
+      "category": {
+        "name": "L' ORGUEIL",
+        "min": 10001,
+        "max": 15000,
+        "emoji": "🛡",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 8,
+      "name": "NEXUS",
+      "points": 13710,
+      "category": {
+        "name": "L' ORGUEIL",
+        "min": 10001,
+        "max": 15000,
+        "emoji": "🛡",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 9,
+      "name": "GRAYSON",
+      "points": 11190,
+      "category": {
+        "name": "L' ORGUEIL",
+        "min": 10001,
+        "max": 15000,
+        "emoji": "🛡",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 10,
+      "name": "YUMI – DARK",
+      "points": 10560,
+      "category": {
+        "name": "L' ORGUEIL",
+        "min": 10001,
+        "max": 15000,
+        "emoji": "🛡",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 11,
+      "name": "IDINE",
+      "points": 10430,
+      "category": {
+        "name": "L' ORGUEIL",
+        "min": 10001,
+        "max": 15000,
+        "emoji": "🛡",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 12,
+      "name": "NKOLO",
+      "points": 9500,
+      "category": {
+        "name": "LA LUXURE",
+        "min": 8001,
+        "max": 10000,
+        "emoji": "🔞",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 13,
+      "name": "ECKSON",
+      "points": 9460,
+      "category": {
+        "name": "LA LUXURE",
+        "min": 8001,
+        "max": 10000,
+        "emoji": "🔞",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 14,
+      "name": "IZANA",
+      "points": 6950,
+      "category": {
+        "name": "L' AVARICE",
+        "min": 6001,
+        "max": 8000,
+        "emoji": "💰",
+        "reward": "⭐️ RÉCOMPENSE : 150 E ⭐️\n[sauf pour ceux déjà passé par la]"
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 15,
+      "name": "BAROU",
+      "points": 6670,
+      "category": {
+        "name": "L' AVARICE",
+        "min": 6001,
+        "max": 8000,
+        "emoji": "💰",
+        "reward": "⭐️ RÉCOMPENSE : 150 E ⭐️\n[sauf pour ceux déjà passé par la]"
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 16,
+      "name": "KEVIN",
+      "points": 6315,
+      "category": {
+        "name": "L' AVARICE",
+        "min": 6001,
+        "max": 8000,
+        "emoji": "💰",
+        "reward": "⭐️ RÉCOMPENSE : 150 E ⭐️\n[sauf pour ceux déjà passé par la]"
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 17,
+      "name": "KEN",
+      "points": 5310,
+      "category": {
+        "name": "L' ENVIE",
+        "min": 4001,
+        "max": 6000,
+        "emoji": "🥇",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 18,
+      "name": "BÉNI",
+      "points": 5110,
+      "category": {
+        "name": "L' ENVIE",
+        "min": 4001,
+        "max": 6000,
+        "emoji": "🥇",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 19,
+      "name": "MICKEY",
+      "points": 4830,
+      "category": {
+        "name": "L' ENVIE",
+        "min": 4001,
+        "max": 6000,
+        "emoji": "🥇",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 20,
+      "name": "LORD KARMA",
+      "points": 4800,
+      "category": {
+        "name": "L' ENVIE",
+        "min": 4001,
+        "max": 6000,
+        "emoji": "🥇",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 21,
+      "name": "MARC",
+      "points": 4780,
+      "category": {
+        "name": "L' ENVIE",
+        "min": 4001,
+        "max": 6000,
+        "emoji": "🥇",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 22,
+      "name": "PIERRE",
+      "points": 4595,
+      "category": {
+        "name": "L' ENVIE",
+        "min": 4001,
+        "max": 6000,
+        "emoji": "🥇",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 23,
+      "name": "GMK",
+      "points": 4360,
+      "category": {
+        "name": "L' ENVIE",
+        "min": 4001,
+        "max": 6000,
+        "emoji": "🥇",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 24,
+      "name": "ZEUS",
+      "points": 4240,
+      "category": {
+        "name": "L' ENVIE",
+        "min": 4001,
+        "max": 6000,
+        "emoji": "🥇",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 25,
+      "name": "SIBIRI",
+      "points": 3990,
+      "category": {
+        "name": "LA GOURMANDISE",
+        "min": 2001,
+        "max": 4000,
+        "emoji": "🎂",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 26,
+      "name": "SANO",
+      "points": 3930,
+      "category": {
+        "name": "LA GOURMANDISE",
+        "min": 2001,
+        "max": 4000,
+        "emoji": "🎂",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 27,
+      "name": "VESPER",
+      "points": 3720,
+      "category": {
+        "name": "LA GOURMANDISE",
+        "min": 2001,
+        "max": 4000,
+        "emoji": "🎂",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 28,
+      "name": "JUAN",
+      "points": 3290,
+      "category": {
+        "name": "LA GOURMANDISE",
+        "min": 2001,
+        "max": 4000,
+        "emoji": "🎂",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 29,
+      "name": "STEPHIE",
+      "points": 3230,
+      "category": {
+        "name": "LA GOURMANDISE",
+        "min": 2001,
+        "max": 4000,
+        "emoji": "🎂",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 30,
+      "name": "SHO",
+      "points": 2820,
+      "category": {
+        "name": "LA GOURMANDISE",
+        "min": 2001,
+        "max": 4000,
+        "emoji": "🎂",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 31,
+      "name": "GUY",
+      "points": 2420,
+      "category": {
+        "name": "LA GOURMANDISE",
+        "min": 2001,
+        "max": 4000,
+        "emoji": "🎂",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 32,
+      "name": "GLEN",
+      "points": 1900,
+      "category": {
+        "name": "LA PARESSE",
+        "min": 0,
+        "max": 2000,
+        "emoji": "⛱️",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 33,
+      "name": "LEWIS",
+      "points": 1730,
+      "category": {
+        "name": "LA PARESSE",
+        "min": 0,
+        "max": 2000,
+        "emoji": "⛱️",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 34,
+      "name": "MIKAMI",
+      "points": 1630,
+      "category": {
+        "name": "LA PARESSE",
+        "min": 0,
+        "max": 2000,
+        "emoji": "⛱️",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 35,
+      "name": "ARIEL",
+      "points": 1400,
+      "category": {
+        "name": "LA PARESSE",
+        "min": 0,
+        "max": 2000,
+        "emoji": "⛱️",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 36,
+      "name": "IRINA",
+      "points": 1370,
+      "category": {
+        "name": "LA PARESSE",
+        "min": 0,
+        "max": 2000,
+        "emoji": "⛱️",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 37,
+      "name": "DAHN",
+      "points": 1275,
+      "category": {
+        "name": "LA PARESSE",
+        "min": 0,
+        "max": 2000,
+        "emoji": "⛱️",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 38,
+      "name": "LARA",
+      "points": 1260,
+      "category": {
+        "name": "LA PARESSE",
+        "min": 0,
+        "max": 2000,
+        "emoji": "⛱️",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 39,
+      "name": "JOAN",
+      "points": 1170,
+      "category": {
+        "name": "LA PARESSE",
+        "min": 0,
+        "max": 2000,
+        "emoji": "⛱️",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 40,
+      "name": "ZARAKI",
+      "points": 1150,
+      "category": {
+        "name": "LA PARESSE",
+        "min": 0,
+        "max": 2000,
+        "emoji": "⛱️",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 41,
+      "name": "YUMEKO",
+      "points": 1080,
+      "category": {
+        "name": "LA PARESSE",
+        "min": 0,
+        "max": 2000,
+        "emoji": "⛱️",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 42,
+      "name": "RYOMEN",
+      "points": 1050,
+      "category": {
+        "name": "LA PARESSE",
+        "min": 0,
+        "max": 2000,
+        "emoji": "⛱️",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 43,
+      "name": "OWEN",
+      "points": 970,
+      "category": {
+        "name": "LA PARESSE",
+        "min": 0,
+        "max": 2000,
+        "emoji": "⛱️",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 44,
+      "name": "TRÉSOR",
+      "points": 940,
+      "category": {
+        "name": "LA PARESSE",
+        "min": 0,
+        "max": 2000,
+        "emoji": "⛱️",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 45,
+      "name": "ALEXANDRO",
+      "points": 930,
+      "category": {
+        "name": "LA PARESSE",
+        "min": 0,
+        "max": 2000,
+        "emoji": "⛱️",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 46,
+      "name": "KIRUA",
+      "points": 850,
+      "category": {
+        "name": "LA PARESSE",
+        "min": 0,
+        "max": 2000,
+        "emoji": "⛱️",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 47,
+      "name": "QUIZZEUR AB.",
+      "points": 740,
+      "category": {
+        "name": "LA PARESSE",
+        "min": 0,
+        "max": 2000,
+        "emoji": "⛱️",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 48,
+      "name": "SANITOR",
+      "points": 730,
+      "category": {
+        "name": "LA PARESSE",
+        "min": 0,
+        "max": 2000,
+        "emoji": "⛱️",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 49,
+      "name": "SANIR",
+      "points": 610,
+      "category": {
+        "name": "LA PARESSE",
+        "min": 0,
+        "max": 2000,
+        "emoji": "⛱️",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 50,
+      "name": "JONATHAN",
+      "points": 610,
+      "category": {
+        "name": "LA PARESSE",
+        "min": 0,
+        "max": 2000,
+        "emoji": "⛱️",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 51,
+      "name": "ABDOULAYE",
+      "points": 590,
+      "category": {
+        "name": "LA PARESSE",
+        "min": 0,
+        "max": 2000,
+        "emoji": "⛱️",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 52,
+      "name": "SOMA",
+      "points": 580,
+      "category": {
+        "name": "LA PARESSE",
+        "min": 0,
+        "max": 2000,
+        "emoji": "⛱️",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 53,
+      "name": "KURAPIKA",
+      "points": 560,
+      "category": {
+        "name": "LA PARESSE",
+        "min": 0,
+        "max": 2000,
+        "emoji": "⛱️",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 54,
+      "name": "NEGRITO",
+      "points": 560,
+      "category": {
+        "name": "LA PARESSE",
+        "min": 0,
+        "max": 2000,
+        "emoji": "⛱️",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 55,
+      "name": "NEAR",
+      "points": 510,
+      "category": {
+        "name": "LA PARESSE",
+        "min": 0,
+        "max": 2000,
+        "emoji": "⛱️",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 56,
+      "name": "HANIF",
+      "points": 460,
+      "category": {
+        "name": "LA PARESSE",
+        "min": 0,
+        "max": 2000,
+        "emoji": "⛱️",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 57,
+      "name": "SASUKE UCH.",
+      "points": 440,
+      "category": {
+        "name": "LA PARESSE",
+        "min": 0,
+        "max": 2000,
+        "emoji": "⛱️",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 58,
+      "name": "WILLIAM",
+      "points": 410,
+      "category": {
+        "name": "LA PARESSE",
+        "min": 0,
+        "max": 2000,
+        "emoji": "⛱️",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 59,
+      "name": "EL MINOTOR",
+      "points": 390,
+      "category": {
+        "name": "LA PARESSE",
+        "min": 0,
+        "max": 2000,
+        "emoji": "⛱️",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 60,
+      "name": "JUVENALE",
+      "points": 350,
+      "category": {
+        "name": "LA PARESSE",
+        "min": 0,
+        "max": 2000,
+        "emoji": "⛱️",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 61,
+      "name": "YVANN",
+      "points": 340,
+      "category": {
+        "name": "LA PARESSE",
+        "min": 0,
+        "max": 2000,
+        "emoji": "⛱️",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 62,
+      "name": "GO GUN-HEE",
+      "points": 320,
+      "category": {
+        "name": "LA PARESSE",
+        "min": 0,
+        "max": 2000,
+        "emoji": "⛱️",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 63,
+      "name": "NAGI",
+      "points": 320,
+      "category": {
+        "name": "LA PARESSE",
+        "min": 0,
+        "max": 2000,
+        "emoji": "⛱️",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 64,
+      "name": "SANJI",
+      "points": 320,
+      "category": {
+        "name": "LA PARESSE",
+        "min": 0,
+        "max": 2000,
+        "emoji": "⛱️",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 65,
+      "name": "CHIHIRO",
+      "points": 310,
+      "category": {
+        "name": "LA PARESSE",
+        "min": 0,
+        "max": 2000,
+        "emoji": "⛱️",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 66,
+      "name": "GYVER",
+      "points": 310,
+      "category": {
+        "name": "LA PARESSE",
+        "min": 0,
+        "max": 2000,
+        "emoji": "⛱️",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 67,
+      "name": "KENSHIN",
+      "points": 300,
+      "category": {
+        "name": "LA PARESSE",
+        "min": 0,
+        "max": 2000,
+        "emoji": "⛱️",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 68,
+      "name": "JOSEPH DES",
+      "points": 270,
+      "category": {
+        "name": "LA PARESSE",
+        "min": 0,
+        "max": 2000,
+        "emoji": "⛱️",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 69,
+      "name": "RYOMEN SUKUNA",
+      "points": 260,
+      "category": {
+        "name": "LA PARESSE",
+        "min": 0,
+        "max": 2000,
+        "emoji": "⛱️",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 70,
+      "name": "FRIDOLIN",
+      "points": 240,
+      "category": {
+        "name": "LA PARESSE",
+        "min": 0,
+        "max": 2000,
+        "emoji": "⛱️",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 71,
+      "name": "ESPOIR",
+      "points": 230,
+      "category": {
+        "name": "LA PARESSE",
+        "min": 0,
+        "max": 2000,
+        "emoji": "⛱️",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 72,
+      "name": "ESPADAS",
+      "points": 220,
+      "category": {
+        "name": "LA PARESSE",
+        "min": 0,
+        "max": 2000,
+        "emoji": "⛱️",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 73,
+      "name": "AYMAR",
+      "points": 210,
+      "category": {
+        "name": "LA PARESSE",
+        "min": 0,
+        "max": 2000,
+        "emoji": "⛱️",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 74,
+      "name": "DOREL",
+      "points": 210,
+      "category": {
+        "name": "LA PARESSE",
+        "min": 0,
+        "max": 2000,
+        "emoji": "⛱️",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 75,
+      "name": "EIJIRO",
+      "points": 200,
+      "category": {
+        "name": "LA PARESSE",
+        "min": 0,
+        "max": 2000,
+        "emoji": "⛱️",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "name": "LORD",
+      "points": 200,
+      "joinDate": "2025-06-13T18:43:17.979Z",
+      "rank": 76,
+      "category": {
+        "name": "LA PARESSE",
+        "min": 0,
+        "max": 2000,
+        "emoji": "⛱️",
+        "reward": null
+      }
+    },
+    {
+      "name": "JOHN",
+      "points": 200,
+      "joinDate": "2025-06-13T18:54:41.965Z",
+      "rank": 77,
+      "category": {
+        "name": "LA PARESSE",
+        "min": 0,
+        "max": 2000,
+        "emoji": "⛱️",
+        "reward": null
+      }
+    },
+    {
+      "rank": 78,
+      "name": "THEO YENE",
+      "points": 190,
+      "category": {
+        "name": "LA PARESSE",
+        "min": 0,
+        "max": 2000,
+        "emoji": "⛱️",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 79,
+      "name": "ARTHUR",
+      "points": 160,
+      "category": {
+        "name": "LA PARESSE",
+        "min": 0,
+        "max": 2000,
+        "emoji": "⛱️",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 80,
+      "name": "JUSCARE",
+      "points": 160,
+      "category": {
+        "name": "LA PARESSE",
+        "min": 0,
+        "max": 2000,
+        "emoji": "⛱️",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 81,
+      "name": "WISDOM",
+      "points": 160,
+      "category": {
+        "name": "LA PARESSE",
+        "min": 0,
+        "max": 2000,
+        "emoji": "⛱️",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 82,
+      "name": "SHA DOW",
+      "points": 150,
+      "category": {
+        "name": "LA PARESSE",
+        "min": 0,
+        "max": 2000,
+        "emoji": "⛱️",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 83,
+      "name": "DAVAMATSU",
+      "points": 140,
+      "category": {
+        "name": "LA PARESSE",
+        "min": 0,
+        "max": 2000,
+        "emoji": "⛱️",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 84,
+      "name": "YAMIL",
+      "points": 140,
+      "category": {
+        "name": "LA PARESSE",
+        "min": 0,
+        "max": 2000,
+        "emoji": "⛱️",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 85,
+      "name": "AKASHI",
+      "points": 130,
+      "category": {
+        "name": "LA PARESSE",
+        "min": 0,
+        "max": 2000,
+        "emoji": "⛱️",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 86,
+      "name": "MAYEUIL",
+      "points": 130,
+      "category": {
+        "name": "LA PARESSE",
+        "min": 0,
+        "max": 2000,
+        "emoji": "⛱️",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 87,
+      "name": "YAMASUKE",
+      "points": 130,
+      "category": {
+        "name": "LA PARESSE",
+        "min": 0,
+        "max": 2000,
+        "emoji": "⛱️",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 88,
+      "name": "MUGEN",
+      "points": 130,
+      "category": {
+        "name": "LA PARESSE",
+        "min": 0,
+        "max": 2000,
+        "emoji": "⛱️",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 89,
+      "name": "CHASE",
+      "points": 120,
+      "category": {
+        "name": "LA PARESSE",
+        "min": 0,
+        "max": 2000,
+        "emoji": "⛱️",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 90,
+      "name": "JUSTURIAVI",
+      "points": 120,
+      "category": {
+        "name": "LA PARESSE",
+        "min": 0,
+        "max": 2000,
+        "emoji": "⛱️",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 91,
+      "name": "MERDI",
+      "points": 110,
+      "category": {
+        "name": "LA PARESSE",
+        "min": 0,
+        "max": 2000,
+        "emoji": "⛱️",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 92,
+      "name": "SASUKE",
+      "points": 110,
+      "category": {
+        "name": "LA PARESSE",
+        "min": 0,
+        "max": 2000,
+        "emoji": "⛱️",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 93,
+      "name": "INDRA",
+      "points": 100,
+      "category": {
+        "name": "LA PARESSE",
+        "min": 0,
+        "max": 2000,
+        "emoji": "⛱️",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 94,
+      "name": "PDG",
+      "points": 100,
+      "category": {
+        "name": "LA PARESSE",
+        "min": 0,
+        "max": 2000,
+        "emoji": "⛱️",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 95,
+      "name": "VOLDY",
+      "points": 100,
+      "category": {
+        "name": "LA PARESSE",
+        "min": 0,
+        "max": 2000,
+        "emoji": "⛱️",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 96,
+      "name": "SUNG JINWOO",
+      "points": 100,
+      "category": {
+        "name": "LA PARESSE",
+        "min": 0,
+        "max": 2000,
+        "emoji": "⛱️",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 97,
+      "name": "NATHAN",
+      "points": 100,
+      "category": {
+        "name": "LA PARESSE",
+        "min": 0,
+        "max": 2000,
+        "emoji": "⛱️",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 98,
+      "name": "CHIN",
+      "points": 90,
+      "category": {
+        "name": "LA PARESSE",
+        "min": 0,
+        "max": 2000,
+        "emoji": "⛱️",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 99,
+      "name": "YVAN",
+      "points": 90,
+      "category": {
+        "name": "LA PARESSE",
+        "min": 0,
+        "max": 2000,
+        "emoji": "⛱️",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 100,
+      "name": "ELIE",
+      "points": 90,
+      "category": {
+        "name": "LA PARESSE",
+        "min": 0,
+        "max": 2000,
+        "emoji": "⛱️",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 101,
+      "name": "BOUDDHA",
+      "points": 80,
+      "category": {
+        "name": "LA PARESSE",
+        "min": 0,
+        "max": 2000,
+        "emoji": "⛱️",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 102,
+      "name": "WILFRIED",
+      "points": 80,
+      "category": {
+        "name": "LA PARESSE",
+        "min": 0,
+        "max": 2000,
+        "emoji": "⛱️",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 103,
+      "name": "RAY",
+      "points": 80,
+      "category": {
+        "name": "LA PARESSE",
+        "min": 0,
+        "max": 2000,
+        "emoji": "⛱️",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 104,
+      "name": "BLM",
+      "points": 70,
+      "category": {
+        "name": "LA PARESSE",
+        "min": 0,
+        "max": 2000,
+        "emoji": "⛱️",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 105,
+      "name": "RASMANE",
+      "points": 70,
+      "category": {
+        "name": "LA PARESSE",
+        "min": 0,
+        "max": 2000,
+        "emoji": "⛱️",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 106,
+      "name": "MAELSTROM",
+      "points": 70,
+      "category": {
+        "name": "LA PARESSE",
+        "min": 0,
+        "max": 2000,
+        "emoji": "⛱️",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 107,
+      "name": "KING",
+      "points": 70,
+      "category": {
+        "name": "LA PARESSE",
+        "min": 0,
+        "max": 2000,
+        "emoji": "⛱️",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 108,
+      "name": "WILSON",
+      "points": 60,
+      "category": {
+        "name": "LA PARESSE",
+        "min": 0,
+        "max": 2000,
+        "emoji": "⛱️",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 109,
+      "name": "ANOS",
+      "points": 60,
+      "category": {
+        "name": "LA PARESSE",
+        "min": 0,
+        "max": 2000,
+        "emoji": "⛱️",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 110,
+      "name": "PRINCESSE",
+      "points": 60,
+      "category": {
+        "name": "LA PARESSE",
+        "min": 0,
+        "max": 2000,
+        "emoji": "⛱️",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 111,
+      "name": "MASH",
+      "points": 60,
+      "category": {
+        "name": "LA PARESSE",
+        "min": 0,
+        "max": 2000,
+        "emoji": "⛱️",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 112,
+      "name": "BRAINNER",
+      "points": 50,
+      "category": {
+        "name": "LA PARESSE",
+        "min": 0,
+        "max": 2000,
+        "emoji": "⛱️",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 113,
+      "name": "SHIN HI SHIN",
+      "points": 50,
+      "category": {
+        "name": "LA PARESSE",
+        "min": 0,
+        "max": 2000,
+        "emoji": "⛱️",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 114,
+      "name": "ARTINEL",
+      "points": 50,
+      "category": {
+        "name": "LA PARESSE",
+        "min": 0,
+        "max": 2000,
+        "emoji": "⛱️",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 115,
+      "name": "JUSVAL",
+      "points": 40,
+      "category": {
+        "name": "LA PARESSE",
+        "min": 0,
+        "max": 2000,
+        "emoji": "⛱️",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 116,
+      "name": "MELLE POUF",
+      "points": 40,
+      "category": {
+        "name": "LA PARESSE",
+        "min": 0,
+        "max": 2000,
+        "emoji": "⛱️",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 117,
+      "name": "XAO",
+      "points": 40,
+      "category": {
+        "name": "LA PARESSE",
+        "min": 0,
+        "max": 2000,
+        "emoji": "⛱️",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 118,
+      "name": "JACK",
+      "points": 40,
+      "category": {
+        "name": "LA PARESSE",
+        "min": 0,
+        "max": 2000,
+        "emoji": "⛱️",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 119,
+      "name": "THALRIC",
+      "points": 40,
+      "category": {
+        "name": "LA PARESSE",
+        "min": 0,
+        "max": 2000,
+        "emoji": "⛱️",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 120,
+      "name": "BRAYD",
+      "points": 30,
+      "category": {
+        "name": "LA PARESSE",
+        "min": 0,
+        "max": 2000,
+        "emoji": "⛱️",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 121,
+      "name": "OKKOTSU",
+      "points": 30,
+      "category": {
+        "name": "LA PARESSE",
+        "min": 0,
+        "max": 2000,
+        "emoji": "⛱️",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 122,
+      "name": "ROSTAND",
+      "points": 30,
+      "category": {
+        "name": "LA PARESSE",
+        "min": 0,
+        "max": 2000,
+        "emoji": "⛱️",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 123,
+      "name": "AGB",
+      "points": 30,
+      "category": {
+        "name": "LA PARESSE",
+        "min": 0,
+        "max": 2000,
+        "emoji": "⛱️",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 124,
+      "name": "JAVIÉR",
+      "points": 20,
+      "category": {
+        "name": "LA PARESSE",
+        "min": 0,
+        "max": 2000,
+        "emoji": "⛱️",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 125,
+      "name": "INSOLENT",
+      "points": 20,
+      "category": {
+        "name": "LA PARESSE",
+        "min": 0,
+        "max": 2000,
+        "emoji": "⛱️",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 126,
+      "name": "MAXIME",
+      "points": 20,
+      "category": {
+        "name": "LA PARESSE",
+        "min": 0,
+        "max": 2000,
+        "emoji": "⛱️",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 127,
+      "name": "YUKI",
+      "points": 10,
+      "category": {
+        "name": "LA PARESSE",
+        "min": 0,
+        "max": 2000,
+        "emoji": "⛱️",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "rank": 128,
+      "name": "PEDRO",
+      "points": 10,
+      "category": {
+        "name": "LA PARESSE",
+        "min": 0,
+        "max": 2000,
+        "emoji": "⛱️",
+        "reward": null
+      },
+      "joinDate": "2025-06-13T17:45:20.752Z"
+    },
+    {
+      "name": "YU",
+      "points": 10,
+      "joinDate": "2025-06-13T18:54:41.965Z",
+      "rank": 129,
+      "category": {
+        "name": "LA PARESSE",
+        "min": 0,
+        "max": 2000,
+        "emoji": "⛱️",
+        "reward": null
+      }
+    }
+  ]
+}
