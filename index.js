@@ -22,11 +22,25 @@ const APPSTATE_FILE = 'appstate.json';
 const DEFAULT_CONFIG = {
     commandPrefix: '!',
     autoAcceptFriends: true,
-    enableLogging: true
+    enableLogging: true,
+    botActive: true,
+    autoReconnect: true,
+    reconnectInterval: 30000, // 30 secondes
+    maxReconnectAttempts: 10,
+    reconnectBackoffMultiplier: 1.5,
+    connectionHealthCheckInterval: 60000, // 1 minute
+    appstateBackupInterval: 300000 // 5 minutes
 };
 
 let api;
 let botConfig = { ...DEFAULT_CONFIG };
+let botActive = true;
+let reconnectTimer = null;
+let healthCheckTimer = null;
+let appstateBackupTimer = null;
+let lastConnectionTime = Date.now();
+let reconnectAttempts = 0;
+let isReconnecting = false;
 
 // Système de sessions pour les confirmations
 const pendingSessions = new Map();
@@ -92,6 +106,11 @@ const storage = {
                 if (config.admins && Array.isArray(config.admins)) {
                     this.admins = new Set([SUPER_ADMIN_ID, ...config.admins]);
                 }
+                
+                // Synchroniser l'état du bot
+                if (config.botActive !== undefined) {
+                    botActive = config.botActive;
+                }
             }
         } catch (e) {
             console.error('Erreur de chargement des données:', e);
@@ -102,7 +121,7 @@ const storage = {
         try {
             // Sauvegarder la liste des admins dans la config (excluant le super admin)
             const adminsList = Array.from(this.admins).filter(id => id !== SUPER_ADMIN_ID);
-            const configToSave = { ...botConfig, admins: adminsList };
+            const configToSave = { ...botConfig, admins: adminsList, botActive: botActive };
             
             fs.writeFileSync(LEADERBOARD_FILE, JSON.stringify(this.leaderboard, null, 2));
             fs.writeFileSync(HISTORY_FILE, JSON.stringify(this.history, null, 2));
@@ -824,16 +843,25 @@ const commands = {
     },
 
     // Commande kick pour supprimer un membre du groupe
-    kickUser(threadID, mentionedUsers, adminId) {
+    kickUser(threadID, mentionedUsers, adminId, messageReply = null) {
         if (!storage.isAdmin(adminId)) {
             return "❌ Seuls les administrateurs peuvent utiliser cette commande.";
         }
 
-        if (!mentionedUsers || mentionedUsers.length === 0) {
-            return `❌ Vous devez mentionner un utilisateur à expulser.\nUsage: ${botConfig.commandPrefix}kick @utilisateur`;
+        let userToKick = null;
+
+        // Priorité 1: Utilisateur mentionné dans le message de réponse
+        if (messageReply && messageReply.senderID) {
+            userToKick = messageReply.senderID;
+        }
+        // Priorité 2: Utilisateur mentionné directement
+        else if (mentionedUsers && mentionedUsers.length > 0) {
+            userToKick = mentionedUsers[0];
         }
 
-        const userToKick = mentionedUsers[0];
+        if (!userToKick) {
+            return `❌ Vous devez mentionner un utilisateur ou répondre à son message.\nUsage: ${botConfig.commandPrefix}kick @utilisateur\nOu répondez à un message avec: ${botConfig.commandPrefix}kick`;
+        }
         
         // Empêcher de kick le super admin
         if (userToKick === SUPER_ADMIN_ID) {
@@ -1049,8 +1077,10 @@ const commands = {
 🔸 ${prefix}ajouteradmin @user - Ajouter un admin
 🔸 ${prefix}supprimeradmin [id] - Retirer un admin
 🔸 ${prefix}listadmins - Liste des administrateurs
+🔸 ${prefix}on - Activer le bot (répond aux commandes)
+🔸 ${prefix}off - Mettre le bot en veille (ignore les commandes)
 🔸 ${prefix}add @user / [userID] - Ajouter membre au groupe
-🔸 ${prefix}kick @user - Expulser un membre
+🔸 ${prefix}kick @user - Expulser un membre (ou répondre à son message)
 🔸 ${prefix}deleted - Messages supprimés récents
 🔸 ${prefix}deletionstats - Statistiques suppressions
 🔸 ${prefix}groupinfo - Infos du groupe
@@ -1065,6 +1095,8 @@ const commands = {
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 🌟 NOUVEAUTÉS v2.0: AniList + Gestion avancée 🌟
+🔄 Reconnexion automatique pour maintenir la connexion
+💤 Commandes ON/OFF pour contrôler l'activité du bot
 🌟 VEƝI🌿VIƊI🌿VIĆI - V.V.V 🌟`;
     },
 
@@ -1700,6 +1732,74 @@ async function handleMessage(event) {
         
         console.log(`🎯 Commande reçue: ${cmd} de ${senderID} dans ${threadID}`);
         
+        // Commandes spéciales qui fonctionnent même quand le bot est en veille
+        if (cmd === 'on' || cmd === 'off') {
+            if (!storage.isAdmin(senderID)) {
+                api.sendMessage("❌ Seuls les administrateurs peuvent utiliser cette commande.", threadID);
+                return;
+            }
+            
+            if (cmd === 'on') {
+                botActive = true;
+                botConfig.botActive = true;
+                storage.saveData();
+                
+                const toBoldUnicode = (text) => {
+                    const boldMap = {
+                        'A': '𝐀', 'B': '𝐁', 'C': '𝐂', 'D': '𝐃', 'E': '𝐄', 'F': '𝐅', 'G': '𝐆', 'H': '𝐇', 'I': '𝐈', 'J': '𝐉',
+                        'K': '𝐊', 'L': '𝐋', 'M': '𝐌', 'N': '𝐍', 'O': '𝐎', 'P': '𝐏', 'Q': '𝐐', 'R': '𝐑', 'S': '𝐒', 'T': '𝐓',
+                        'U': '𝐔', 'V': '𝐕', 'W': '𝐖', 'X': '𝐗', 'Y': '𝐘', 'Z': '𝐙',
+                        'a': '𝐚', 'b': '𝐛', 'c': '𝐜', 'd': '𝐝', 'e': '𝐞', 'f': '𝐟', 'g': '𝐠', 'h': '𝐡', 'i': '𝐢', 'j': '𝐣',
+                        'k': '𝐤', 'l': '𝐥', 'm': '𝐦', 'n': '𝐧', 'o': '𝐨', 'p': '𝐩', 'q': '𝐪', 'r': '𝐫', 's': '𝐬', 't': '𝐭',
+                        'u': '𝐮', 'v': '𝐯', 'w': '𝐰', 'x': '𝐱', 'y': '𝐲', 'z': '𝐳',
+                        '0': '𝟎', '1': '𝟏', '2': '𝟐', '3': '𝟑', '4': '𝟒', '5': '𝟓', '6': '𝟔', '7': '𝟕', '8': '𝟖', '9': '𝟗'
+                    };
+                    return text.replace(/[A-Za-z0-9]/g, char => boldMap[char] || char);
+                };
+                
+                api.sendMessage(`✅ ${toBoldUnicode('Bot activé !')}
+                
+🤖 ${toBoldUnicode('Le bot V.V.V est maintenant actif et répond aux commandes')}
+🚀 ${toBoldUnicode('Toutes les fonctionnalités sont disponibles')}
+📊 ${toBoldUnicode('Tapez')} ${prefix}menu ${toBoldUnicode('pour voir les commandes')}`, threadID);
+                
+                console.log('✅ Bot activé par l\'admin:', senderID);
+                
+            } else if (cmd === 'off') {
+                botActive = false;
+                botConfig.botActive = false;
+                storage.saveData();
+                
+                const toBoldUnicode = (text) => {
+                    const boldMap = {
+                        'A': '𝐀', 'B': '𝐁', 'C': '𝐂', 'D': '𝐃', 'E': '𝐄', 'F': '𝐅', 'G': '𝐆', 'H': '𝐇', 'I': '𝐈', 'J': '𝐉',
+                        'K': '𝐊', 'L': '𝐋', 'M': '𝐌', 'N': '𝐍', 'O': '𝐎', 'P': '𝐏', 'Q': '𝐐', 'R': '𝐑', 'S': '𝐒', 'T': '𝐓',
+                        'U': '𝐔', 'V': '𝐕', 'W': '𝐖', 'X': '𝐗', 'Y': '𝐘', 'Z': '𝐙',
+                        'a': '𝐚', 'b': '𝐛', 'c': '𝐜', 'd': '𝐝', 'e': '𝐞', 'f': '𝐟', 'g': '𝐠', 'h': '𝐡', 'i': '𝐢', 'j': '𝐣',
+                        'k': '𝐤', 'l': '𝐥', 'm': '𝐦', 'n': '𝐧', 'o': '𝐨', 'p': '𝐩', 'q': '𝐪', 'r': '𝐫', 's': '𝐬', 't': '𝐭',
+                        'u': '𝐮', 'v': '𝐯', 'w': '𝐰', 'x': '𝐱', 'y': '𝐲', 'z': '𝐳',
+                        '0': '𝟎', '1': '𝟏', '2': '𝟐', '3': '𝟑', '4': '𝟒', '5': '𝟓', '6': '𝟔', '7': '𝟕', '8': '𝟖', '9': '𝟗'
+                    };
+                    return text.replace(/[A-Za-z0-9]/g, char => boldMap[char] || char);
+                };
+                
+                api.sendMessage(`😴 ${toBoldUnicode('Bot mis en veille')}
+                
+🔇 ${toBoldUnicode('Le bot V.V.V ne répond plus aux commandes')}
+⚠️ ${toBoldUnicode('Seuls les admins peuvent le réactiver avec')} ${prefix}on
+🔄 ${toBoldUnicode('Le système de reconnexion reste actif')}`, threadID);
+                
+                console.log('💤 Bot mis en veille par l\'admin:', senderID);
+            }
+            return;
+        }
+        
+        // Vérifier si le bot est actif pour les autres commandes
+        if (!botActive) {
+            // Le bot est en veille, ne rien faire (ignorer silencieusement)
+            return;
+        }
+        
         try {
             // Utiliser switch sans await dans les cases, gérer l'async différemment
             if (cmd === 'anime') {
@@ -2190,6 +2290,8 @@ async function handleMessage(event) {
                     } catch (error) {
                         api.sendMessage("❌ Erreur lors du test de ping.", threadID);
                     }
+
+
                     break;
 
                 case 'groupinfo':
@@ -2353,7 +2455,8 @@ async function handleMessage(event) {
                 case 'kick':
                 case 'expulser':
                     const mentionedUsers = event.mentions ? Object.keys(event.mentions) : [];
-                    const kickResult = commands.kickUser(threadID, mentionedUsers, senderID);
+                    const messageReply = event.messageReply ? event.messageReply : null;
+                    const kickResult = commands.kickUser(threadID, mentionedUsers, senderID, messageReply);
                     if (kickResult) {
                         api.sendMessage(kickResult, threadID);
                     }
@@ -2593,16 +2696,316 @@ function getStatusMessage() {
         return text.replace(/[A-Za-z0-9]/g, char => boldMap[char] || char);
     };
 
+    const statusEmoji = botActive ? '✅' : '😴';
+    const statusText = botActive ? 'Actif et opérationnel' : 'En veille (inactif)';
+    const reconnectStatus = botConfig.autoReconnect ? 'Activée' : 'Désactivée';
+    
     return `🤖 ${toBoldUnicode('Statut du V.V.VAdminBot')}
     
 ⏱️ ${toBoldUnicode('Temps d\'activité:')} ${hours}h ${minutes}m ${seconds}s
+${statusEmoji} ${toBoldUnicode('État du bot:')} ${statusText}
+🔄 ${toBoldUnicode('Reconnexion auto:')} ${reconnectStatus}
 👥 ${toBoldUnicode('Joueurs enregistrés:')} ${playerCount}
 👑 ${toBoldUnicode('Administrateurs:')} ${adminCount}
 🔄 ${toBoldUnicode('Merges en mémoire:')} ${mergeCount}
 ⚙️ ${toBoldUnicode('Préfixe des commandes:')} ${botConfig.commandPrefix}
 📊 ${toBoldUnicode('Version:')} V.V.VAdminBot v2.0
 
-✅ ${toBoldUnicode('Bot opérationnel et prêt à traiter vos commandes!')}`;
+${botActive ? '✅' : '⚠️'} ${toBoldUnicode(botActive ? 'Bot opérationnel et prêt à traiter vos commandes!' : 'Bot en veille - Utilisez !on pour l\'activer')}`;
+}
+
+// ===================== SYSTÈME DE RECONNEXION AUTOMATIQUE RENFORCÉ =====================
+function saveAppState() {
+    if (api && api.getAppState) {
+        try {
+            const currentAppState = api.getAppState();
+            
+            // Créer une sauvegarde horodatée
+            const timestamp = moment().format('YYYYMMDD_HHmmss');
+            const backupAppStateFile = `appstate_backup_${timestamp}.json`;
+            
+            // Sauvegarder l'état actuel
+            fs.writeFileSync(APPSTATE_FILE, JSON.stringify(currentAppState, null, 2));
+            
+            // Créer une sauvegarde horodatée (garder les 5 dernières)
+            if (!fs.existsSync('appstate_backups')) {
+                fs.mkdirSync('appstate_backups');
+            }
+            
+            fs.writeFileSync(path.join('appstate_backups', backupAppStateFile), JSON.stringify(currentAppState, null, 2));
+            
+            // Nettoyer les anciennes sauvegardes (garder seulement les 5 dernières)
+            const backupFiles = fs.readdirSync('appstate_backups')
+                .filter(file => file.startsWith('appstate_backup_'))
+                .sort()
+                .reverse();
+            
+            if (backupFiles.length > 5) {
+                backupFiles.slice(5).forEach(file => {
+                    fs.unlinkSync(path.join('appstate_backups', file));
+                });
+            }
+            
+            console.log('✅ État de connexion sauvegardé avec backup');
+        } catch (error) {
+            console.error('❌ Erreur lors de la sauvegarde de l\'appstate:', error);
+        }
+    }
+}
+
+function startPeriodicAppStateBackup() {
+    if (appstateBackupTimer) {
+        clearInterval(appstateBackupTimer);
+    }
+    
+    if (botConfig.autoReconnect) {
+        appstateBackupTimer = setInterval(() => {
+            if (api && !isReconnecting) {
+                saveAppState();
+            }
+        }, botConfig.appstateBackupInterval);
+        
+        console.log('🔄 Sauvegarde périodique de l\'appstate activée');
+    }
+}
+
+function performConnectionHealthCheck() {
+    if (!api || isReconnecting) return;
+    
+    return new Promise((resolve) => {
+        // Test multiple pour vérifier la santé de la connexion
+        Promise.all([
+            new Promise((resolve) => {
+                api.getCurrentUserID((err, userID) => {
+                    resolve(!err && userID);
+                });
+            }),
+            new Promise((resolve) => {
+                api.getFriendsList((err, friends) => {
+                    resolve(!err);
+                });
+            })
+        ]).then(results => {
+            const isHealthy = results.every(result => result === true);
+            resolve(isHealthy);
+        }).catch(() => {
+            resolve(false);
+        });
+    });
+}
+
+function startConnectionHealthMonitoring() {
+    if (healthCheckTimer) {
+        clearInterval(healthCheckTimer);
+    }
+    
+    if (botConfig.autoReconnect) {
+        healthCheckTimer = setInterval(async () => {
+            if (isReconnecting) return;
+            
+            const isHealthy = await performConnectionHealthCheck();
+            
+            if (!isHealthy) {
+                console.log('⚠️ Problème de connexion détecté, initiation de la reconnexion...');
+                attemptReconnection();
+            } else {
+                lastConnectionTime = Date.now();
+                // Réinitialiser le compteur d'essais si la connexion est bonne
+                reconnectAttempts = 0;
+            }
+        }, botConfig.connectionHealthCheckInterval);
+        
+        console.log('💓 Surveillance de santé de connexion activée');
+    }
+}
+
+function startReconnectMonitoring() {
+    if (reconnectTimer) {
+        clearInterval(reconnectTimer);
+    }
+    
+    if (botConfig.autoReconnect) {
+        reconnectTimer = setInterval(() => {
+            const currentTime = Date.now();
+            const timeSinceLastConnection = currentTime - lastConnectionTime;
+            
+            // Vérifier si la connexion est toujours active
+            if (api && timeSinceLastConnection > 300000) { // 5 minutes
+                console.log('🔄 Vérification de la connexion...');
+                
+                // Test simple de la connexion
+                api.getCurrentUserID((err, userID) => {
+                    if (err) {
+                        console.log('⚠️ Connexion perdue, tentative de reconnexion...');
+                        attemptReconnection();
+                    } else {
+                        lastConnectionTime = currentTime;
+                        saveAppState(); // Sauvegarder l'état régulièrement
+                    }
+                });
+            }
+        }, botConfig.reconnectInterval);
+        
+        console.log('🔄 Surveillance de reconnexion activée');
+    }
+}
+
+function attemptReconnection() {
+    if (isReconnecting) {
+        return; // Éviter les reconnexions multiples simultanées
+    }
+    
+    isReconnecting = true;
+    reconnectAttempts++;
+    
+    console.log(`🔄 Tentative de reconnexion ${reconnectAttempts}/${botConfig.maxReconnectAttempts}...`);
+    
+    // Essayer d'abord avec l'appstate principal
+    let appStateToUse = APPSTATE_FILE;
+    
+    if (!fs.existsSync(APPSTATE_FILE)) {
+        // Si l'appstate principal n'existe pas, chercher une sauvegarde
+        console.log('⚠️ Appstate principal manquant, recherche de sauvegarde...');
+        appStateToUse = findLatestAppStateBackup();
+        
+        if (!appStateToUse) {
+            console.error('❌ Aucun fichier appstate disponible pour la reconnexion');
+            isReconnecting = false;
+            scheduleReconnectRetry();
+            return;
+        }
+    }
+    
+    try {
+        const appstate = JSON.parse(fs.readFileSync(appStateToUse, 'utf8'));
+        
+        login({ appState: appstate }, (err, fbApi) => {
+            if (err) {
+                console.error(`❌ Échec de la reconnexion (${reconnectAttempts}/${botConfig.maxReconnectAttempts}):`, err);
+                
+                isReconnecting = false;
+                
+                // Si on a atteint le maximum d'essais avec l'appstate principal, essayer avec une sauvegarde
+                if (reconnectAttempts < botConfig.maxReconnectAttempts) {
+                    if (appStateToUse === APPSTATE_FILE && fs.existsSync('appstate_backups')) {
+                        const backupFile = findLatestAppStateBackup();
+                        if (backupFile && backupFile !== APPSTATE_FILE) {
+                            console.log('🔄 Tentative avec sauvegarde d\'appstate...');
+                            // Copier la sauvegarde comme appstate principal temporaire
+                            fs.copyFileSync(backupFile, APPSTATE_FILE);
+                        }
+                    }
+                    scheduleReconnectRetry();
+                } else {
+                    console.error('❌ Nombre maximum de tentatives de reconnexion atteint');
+                    reconnectAttempts = 0; // Reset pour permettre de futurs essais
+                }
+                
+                return;
+            }
+            
+            console.log('✅ Reconnexion réussie !');
+            api = fbApi;
+            lastConnectionTime = Date.now();
+            reconnectAttempts = 0;
+            isReconnecting = false;
+            
+            // Sauvegarder le nouvel état de connexion
+            saveAppState();
+            
+            // Réinitialiser les modules
+            anilistCommands = new AniListCommands();
+            groupManagement = new GroupManagement(api, storage);
+            enhancedCommands = new EnhancedCommands(api, storage);
+            
+            // Redémarrer l'écoute des événements
+            setupEventListener();
+            
+            // Redémarrer la surveillance
+            startReconnectMonitoring();
+            startConnectionHealthMonitoring();
+            startPeriodicAppStateBackup();
+        });
+        
+    } catch (error) {
+        console.error('❌ Erreur lors de la lecture de l\'appstate pour reconnexion:', error);
+        isReconnecting = false;
+        scheduleReconnectRetry();
+    }
+}
+
+function findLatestAppStateBackup() {
+    try {
+        if (!fs.existsSync('appstate_backups')) {
+            return null;
+        }
+        
+        const backupFiles = fs.readdirSync('appstate_backups')
+            .filter(file => file.startsWith('appstate_backup_'))
+            .sort()
+            .reverse();
+        
+        if (backupFiles.length > 0) {
+            return path.join('appstate_backups', backupFiles[0]);
+        }
+    } catch (error) {
+        console.error('❌ Erreur lors de la recherche de sauvegarde:', error);
+    }
+    
+    return null;
+}
+
+function scheduleReconnectRetry() {
+    if (reconnectAttempts >= botConfig.maxReconnectAttempts) {
+        console.log('⏰ Attente prolongée avant la prochaine série de tentatives...');
+        setTimeout(() => {
+            reconnectAttempts = 0;
+            attemptReconnection();
+        }, 300000); // 5 minutes
+        return;
+    }
+    
+    // Backoff exponentiel avec un délai croissant
+    const delay = Math.min(
+        botConfig.reconnectInterval * Math.pow(botConfig.reconnectBackoffMultiplier, reconnectAttempts - 1),
+        300000 // Maximum 5 minutes
+    );
+    
+    console.log(`⏰ Prochaine tentative dans ${Math.round(delay / 1000)} secondes...`);
+    
+    setTimeout(() => {
+        attemptReconnection();
+    }, delay);
+}
+
+function setupEventListener() {
+    if (!api) return;
+    
+    api.listen((err, event) => {
+        if (err) {
+            // Ignorer les erreurs de parsing non critiques
+            if (err.type === 'parse_error' || err.error?.includes('Problem parsing')) {
+                return;
+            }
+            
+            console.error('❌ Erreur lors de l\'écoute:', err);
+            
+            // Si c'est une erreur de connexion, tenter une reconnexion
+            if (err.error && (err.error.includes('Not logged in') || err.error.includes('Connection'))) {
+                console.log('🔄 Erreur de connexion détectée, reconnexion...');
+                attemptReconnection();
+            }
+            return;
+        }
+        
+        lastConnectionTime = Date.now();
+        
+        if (botConfig.enableLogging && event.type === 'message') {
+            console.log(`📨 Message reçu de ${event.senderID} dans ${event.threadID}`);
+        }
+        
+        handleEvent(event);
+    });
 }
 
 // ===================== GESTION DES ÉVÉNEMENTS FACEBOOK =====================
@@ -2630,7 +3033,8 @@ function handleEvent(event) {
                         'U': '𝐔', 'V': '𝐕', 'W': '𝐖', 'X': '𝐗', 'Y': '𝐘', 'Z': '𝐙',
                         'a': '𝐚', 'b': '𝐛', 'c': '𝐜', 'd': '𝐝', 'e': '𝐞', 'f': '𝐟', 'g': '𝐠', 'h': '𝐡', 'i': '𝐢', 'j': '𝐣',
                         'k': '𝐤', 'l': '𝐥', 'm': '𝐦', 'n': '𝐧', 'o': '𝐨', 'p': '𝐩', 'q': '𝐪', 'r': '𝐫', 's': '𝐬', 't': '𝐭',
-                        'u': '𝐮', 'v': '𝐯', 'w': '𝐰', 'x': '𝐱', 'y': '𝐲', 'z': '𝐳',
+                        'u': '𝐮'case 'message_reply':
+        , 'v': '𝐯', 'w': '𝐰', 'x': '𝐱', 'y': '𝐲', 'z': '𝐳',
                         '0': '𝟎', '1': '𝟏', '2': '𝟐', '3': '𝟑', '4': '𝟒', '5': '𝟓', '6': '𝟔', '7': '𝟕', '8': '𝟖', '9': '𝟗'
                     };
                     return text.replace(/[A-Za-z0-9]/g, char => boldMap[char] || char);
@@ -2880,23 +3284,16 @@ function initializeBot() {
         console.log('✅ Connexion à Facebook réussie !');
         console.log('🤖 Bot de classement V.V.V en ligne');
         
-        // Écouter les événements
-        api.listen((err, event) => {
-            if (err) {
-                // Ignorer les erreurs de parsing non critiques
-                if (err.type === 'parse_error' || err.error?.includes('Problem parsing')) {
-                    return; // Ignorer silencieusement
-                }
-                console.error('❌ Erreur critique lors de l\'écoute:', err);
-                return;
-            }
-            
-            if (botConfig.enableLogging && event.type === 'message') {
-                console.log(`📨 Message reçu de ${event.senderID} dans ${event.threadID}`);
-            }
-            
-            handleEvent(event);
-        });
+        // Sauvegarder l'état initial de connexion
+        saveAppState();
+        
+        // Démarrer tous les systèmes de surveillance
+        startReconnectMonitoring();
+        startConnectionHealthMonitoring();
+        startPeriodicAppStateBackup();
+        
+        // Configurer l'écoute des événements
+        setupEventListener();
         
         console.log('┌─────────────────────────────────────────────────┐');
         console.log('│                                                 │');
